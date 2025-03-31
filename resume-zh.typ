@@ -66,20 +66,20 @@
 
 许多 HPC workloads 严重受限于内存延迟, 而软件预取技术能通过提前预取数据到高速缓存来减少内存访问延迟。在研究中, 我们寻找到了一种新的预取策略, 并开发了一个 llvm pass 来自动插入预取指令, 提高缓存局部性。
 
-以第三作者发表论文:
-\"Magellan: A High-Performance Loop-Guided Prefetcher for
+以学生二作发表论文:
+Gelin Fu, Tian Xia, *Mingzhuo Yin*, Prashant Nair, Mieszko Lis, Pengju Ren\*, \"Magellan: A High-Performance Loop-Guided Prefetcher for
 Indirect Memory Access\", International Symposium on Computer Architecture (ISCA). 2025. 
 
 == 实习经历
 
 #item2[#link("https://github.com/tensorchord")[Tensorchord] Intern][2023.10 \~ 至今]
-- 参与 *#link("https://github.com/tensorchord/pgvecto.rs")[pgvecto.rs]* 的早期开发, 一个提供*向量相似性*搜索功能的 Postgresql 插件. 我实现了 sparse vector 和 binary vector 的索引, 并研究了最新的向量索引算法.
-- 参与 *#link("https://github.com/tensorchord/VectorChord-bm25")[VectorChord-bm25]* 和 *#link("https://github.com/tensorchord/pg_tokenizer.rs")[pg_tokenizer.rs]* 的开发, 提供 *bm25 ranking* 和 *tokenizer* 功能的 Postgresql 插件. 我负责从 0 开始完成大部分开发工作, 其中实现了完整的 Block-WeakAnd 算法.
+- 参与 *#link("https://github.com/tensorchord/pgvecto.rs")[pgvecto.rs]* 的早期开发, 一个提供*向量相似性*搜索功能的 Postgresql 插件. 实现了 sparse vector 和 binary vector 的索引, 并研究了最新的向量索引算法.
+- 参与 *#link("https://github.com/tensorchord/VectorChord-bm25")[VectorChord-bm25]* 和 *#link("https://github.com/tensorchord/pg_tokenizer.rs")[pg_tokenizer.rs]* 的开发, 提供 *bm25 ranking* 和 *tokenizer* 功能的 Postgresql 插件. 负责从 0 开始完成大部分开发工作, 其中实现了完整的 Block-WeakAnd 算法.
 - 相关技能: Database, Rust, vector index, bm25 ranking, simd
 
-#item2[#link("https://github.com/apache/opendal")[Apache OpenDAL] PPMC Member][2023.04 \~ 至今]
+#item2[#link("https://github.com/apache/opendal")[Apache OpenDAL] PMC Member][2023.04 \~ 至今]
 - Apache OpenDAL 是一个开放数据访问层，实现与各种存储服务的无缝交互。
-- 我参与了 sftp, gcs 相关功能的实现, 以及 c++ binding 和 haskell binding 的开发. 在社区推荐下, 我成为了项目的 PPMC 成员.
+- 参与了 sftp, gcs 相关功能的实现, 以及 c++ binding 和 haskell binding 的开发. 在社区推荐下, 成为了项目的 PMC 成员.
 - 相关技能: Rust, object storage, C++, Haskell
 
 == 个人项目与课程实验
