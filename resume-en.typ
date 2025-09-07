@@ -1,111 +1,112 @@
-// Import Font Awesome icons
 #import "@preview/fontawesome:0.5.0": *
 
-// Define CV color
+// -------------------------------------------------------------------
+// [1] Global Style Definitions
+// -------------------------------------------------------------------
+
 #let cv-color = rgb("#284967")
-// Set page margins
 #set page(margin: (x: 0.9cm, y: 1.0cm))
-// Set default text font and size
-#set text(font: "Noto Sans", size: 10pt) // Changed font to Noto Sans for broader English support
-// Justify paragraphs
-#set par(justify: true)
-// Define a horizontal line style
+#set text(font: "libertinus serif", size: 10pt)
+#set par(justify: true, leading: 0.8em)
 #let chiline = {
   v(-8pt)
   line(stroke: cv-color, length: 100%)
   v(-2pt)
 }
-// Define "|" separator style
 #show "|": text(gray, " | ")
-// Define Level 1 heading style
 #show heading.where(level: 1): it => text(fill: rgb("#222222"), size: 20pt, it) + v(5pt)
-// Define Level 2 heading style
 #show heading.where(level: 2): it => text(cv-color, it) + chiline
-// Define bold text style
 #let bbold(t) = text(fill: rgb("#222222"), weight: "bold", t)
-// Define a 2-column grid item layout
-#let item2(a, b) = grid(
-  columns: (50%, 1fr),
-  align: (left, right),
-  text(fill: rgb("#222222"), weight: "bold", a),
-  text(fill: rgb("#222222"), weight: "bold", b),
-)
-// Define a 3-column grid item layout (currently unused in the translated version, kept for structure)
 #let item(a, b, c) = grid(
-  columns: (20%, 1fr, 30%),
-  align: (left, center, right),
-  text(fill: rgb("#222222"), weight: "bold", a),
-  text(rgb("#222222"), weight: "bold", b),
-  text(rgb("#222222"), weight: "bold", c),
+  columns: (auto, 1fr, auto),
+  align: (left, right, right),
+  bbold(a),
+  bbold(b),
+  bbold(c),
+)
+#let item2(a, b) = grid(
+  columns: (auto, 1fr),
+  align: (left, right),
+  bbold(a),
+  text(b),
 )
 
 // -------------------------------------------------------------------
-// CV Content Start
+// [2] Resume Content
 // -------------------------------------------------------------------
-
 
 #grid(
   columns: (1fr, auto),
   align(center)[
-    = Mingzhuo Yin // Translated Name
+    = Mingzhuo Yin
 
     #set text(rgb("#333333"))
-
-    // Contact Information
-    #fa-icon("envelope") ymzymz\@stu.xjtu.edu.cn | #fa-icon("github") #link("https://github.com/silver-ymz")[github.com/silver-ymz]
+    Xi'an Jiaotong University | B.Eng. in Computer Science | Class of 2026
+    
+    #fa-icon("envelope") yinmingzhuo\@gmail.com | #fa-icon("github") #link("https://github.com/silver-ymz")[github.com/silver-ymz] | #fa-icon("phone") +86 173-8208-4112 | #fa-icon("weixin") ymz31415926535
   ],
 )
 
+\
 
 #set text(rgb("#444444"))
 
 == Education
+#item2[Xi'an Jiaotong University | B.Eng. in Computer Science & Technology (Honors Track)][2022.09 -- 2026.07]
 
-#item2[Xi'an Jiaotong University (XJTU) | Computer Science][Undergraduate Student]
+- Admitted through the #bbold[Young Gifted Class], a national program for early university admission, bypassing middle and high school entrance exams.
+- *Overall GPA*: 3.75/4.0 (86.27/100)
+- *Core Coursework*: Intro to Computer Systems (97), Formal Languages & Compilation (93), Operating Systems (90), Computer Networks (89), Linear Algebra (95), Discrete Mathematics (94), Optimization Methods (91), Probability Theory (89).
 
-*Major GPA:* 86.27/100 #h(1fr) Sep 2022 – July 2026 (Expected)
+== Work Experience
+#item2[ByteDance | Database System R&D Intern (ByteHouse Storage Team)][2025.07 -- Present]
+- Developing the cloud data warehouse, *#link("https://bytehouse.cloud")[ByteHouse]*, a #bbold[cloud-native] platform with decoupled storage and compute, multi-tenancy, and elastic scalability.
+- *Leading the design and initial implementation of the Auto Partition feature*: Building an automatic partitioning and Min-Max index pruning scheme based on Snowflake's micro-partitioning concepts to enhance data management automation and query efficiency.
+- Contributing to the development, testing, and maintenance of core modules including #bbold[Merge/Mutate] and #bbold[Transactions].
+
+#item2[Tensorchord | Software R&D Intern][2023.10 -- 2025.06]
+- As a core member during the company's #bbold[seed stage], played a key role in the 0-to-1 development of core products.
+- Served as a core developer for *#link("https://github.com/tensorchord/pgvecto.rs")[pgvecto.rs]*, a PostgreSQL extension for vector similarity search, contributing ~30% of the core codebase.
+  - Conducted in-depth research on cutting-edge vector indexing algorithms like HNSW and IVF, implementing findings from academic papers into the system.
+  - Independently designed and implemented support for indexing and retrieving #bbold[sparse vectors] and #bbold[binary vectors], significantly broadening the plugin's applicability.
+  - Developed a #bbold[SIMD-accelerated solution for sparse vectors], a novel approach among known open-source products, which greatly boosted retrieval performance.
+- Led the development of *#link("https://github.com/tensorchord/VectorChord-bm25")[VectorChord-bm25]*, a BM25 ranking extension for PostgreSQL, from scratch, fully implementing the #bbold[Block-WAND] algorithm.
+  - Benchmark tests show its geometric mean QPS is #bbold[2.26x] that of #bbold[Elasticsearch] in comparable scenarios.
+
+#item2[Apache OpenDAL | PMC Member & Committer][2023.04 -- Present]
+- As a core contributor to the Apache Top-Level Project #bbold[OpenDAL], committed to its vision of "*One Layer, All Storage*" by providing a unified, seamless data access layer.
+- Deeply involved in implementing and optimizing the #bbold[SFTP] and #bbold[GCS] backends, and led the development of #bbold[C++] and #bbold[Haskell] bindings, significantly expanding the project's cross-language ecosystem.
+- Nominated as a #bbold[Project Management Committee (PMC) Member] in recognition of sustained and outstanding contributions.
 
 == Research Experience
-
-#item2[Institute of Artificial Intelligence and Robotics, \ Xi'an Jiaotong University][Sep 2023 – Present]
-
-Supervised by Prof. Pengju Ren and Prof. Tian Xia. Research focus: *Software Prefetching Optimization* and *Prefetcher Side-Channel Attacks*.
-
-Many HPC workloads are severely limited by memory latency. Software prefetching techniques can reduce memory access latency by fetching data into the cache in advance. In this research, we identified a novel prefetching strategy and developed an LLVM pass to automatically insert prefetch instructions, improving cache locality.
-
-Co-authored the following paper as the second student author:
-Gelin Fu, Tian Xia, *Mingzhuo Yin*, Prashant Nair, Mieszko Lis, Pengju Ren\*, \"Magellan: A High-Performance Loop-Guided Prefetcher for
-Indirect Memory Access\", International Symposium on Computer Architecture (ISCA), 2025.
-
-== Internship Experience
-
-#item2[#link("https://github.com/tensorchord")[Tensorchord] Intern][Oct 2023 – Present]
-- Early development of *#link("https://github.com/tensorchord/pgvecto.rs")[pgvecto.rs]*, a PostgreSQL extension providing *vector similarity search*. Implemented indexing for sparse vectors and binary vectors, and researched state-of-the-art vector indexing algorithms.
-- Development of *#link("https://github.com/tensorchord/VectorChord-bm25")[VectorChord-bm25]* and *#link("https://github.com/tensorchord/pg_tokenizer.rs")[pg_tokenizer.rs]*, PostgreSQL extensions for *BM25 ranking* and *tokenizer* functionalities. Developing most features from scratch, including implementation of the Block-WAND algorithm.
-- Relevant Skills: Databases, Rust, Vector Indexing, BM25 Ranking, SIMD
-
-#item2[#link("https://github.com/apache/opendal")[Apache OpenDAL] PMC Member][Apr 2023 – Present]
-- Apache OpenDAL is an Open Data Access Layer that enables seamless interaction with diverse storage services.
-- Contributed to the implementation of SFTP and GCS functionalities, as well as the development of C++ and Haskell bindings. Became a PMC (Project Management Committee) member upon community recommendation.
-- Relevant Skills: Rust, Object Storage, C++, Haskell
+#item2[Xi'an Jiaotong University, Institute of AI & Robotics | Research Assistant][2023.09 -- 2025.06]
+- Advised by Prof. Pengju Ren and Prof. Tian Xia, focusing on #bbold[compiler prefetching optimization] and #bbold[side-channel attacks].
+- *Publication*: Published as the second student author at #bbold[ISCA 2025 (CCF-A)], a top-tier conference in computer architecture.\
+  Gelin Fu, Tian Xia, #underline[Mingzhuo Yin], Prashant J. Nair, Mieszko Lis, Pengju Ren\*, "Magellan: A High-Performance Loop-Guided Prefetcher for Indirect Memory Access", ISCA 2025.
+- *Problem*: In applications like graph analytics and sparse linear algebra, irregular #bbold[Indirect Memory Accesses (IMAs)] cause traditional hardware prefetchers to fail, creating severe memory bottlenecks. Existing software prefetchers also struggle with complex IMA patterns in nested loops.
+- *Contribution*: Proposed #bbold[Magellan], a high-performance software prefetcher. Its key innovations are:
+  - Constructing a #bbold[Loop Dependence Graph (LDG)] to accurately identify both local and global IMA patterns across nested loops for the first time.
+  - Capturing inner-outer loop semantics to issue prefetches for both current and future iterations, vastly expanding prefetching opportunities.
+- *Implementation*: Independently developed an #bbold[LLVM Pass] to automate Magellan's analysis and prefetching strategies, enabling seamless integration into existing compiler toolchains.
+- *Evaluation*: Across 14 memory-intensive benchmarks, Magellan reduced cache misses by 25% and dynamic instructions by 14% on average compared to the state-of-the-art software prefetcher, achieving a 1.14x average speedup (up to 1.41x).
 
 == Projects & Coursework
+- #bbold[Mini-LSM]: Implemented a persistent key-value store from scratch based on the #bbold[LSM-Tree] architecture.
+  - Features include #bbold[Write-Ahead Logging (WAL)], Manifest file management, multi-level SSTable compaction, and #bbold[MVCC].
+- #bbold[Bustub (CMU 15-445)]: Independently completed four core modules of a relational database kernel.
+  - Implemented the Buffer Pool Manager, #bbold[B+Tree] Index, Query Executor, and 2PL-based Concurrency Control.
+- #bbold[SysY Compiler (PKU Compiler Lab)]: Built a compiler for a C subset (SysY) targeting #bbold[RISC-V] assembly.
+  - Implemented lexical analysis, parsing, semantic analysis, IR generation (LLVM IR), and linear scan register allocation.
+- #bbold[xv6-labs (MIT 6.S081)]: Enhanced the core functionalities of the xv6 teaching OS.
+  - Implemented Copy-on-Write, multithreading, a network driver, locks, mmap, and other key system features.
+- #bbold[TCP/IP Stack (Stanford CS144)]: Built a complete TCP/IP stack from the ground up, passing all automated tests.
+  - Implemented IP, ICMP, ARP, and TCP protocols, including reliable transport, flow control, and congestion control.
 
-*#link("https://github.com/NullRefMaster/Suicide")[The Second Persona]*: A platformer puzzle game developed using Unity2D.
-
-*#link("https://github.com/silver-ymz/mini-lsm")[Mini-LSM]*: A simple key-value storage engine based on LSM-Tree. Built upon a provided framework, it supports operations like insert, query, delete, and features like Manifest, WAL, and MVCC Transactions.
-
-*Bustub*: CMU 15-445 Database Systems Lab (Relational Database). Implemented Buffer Pool Manager, B+Tree Index, Query Execution, and Concurrency Control modules based on the provided framework.
-
-*#link("https://github.com/silver-ymz/sysy")[SysY Compiler]*: PKU Compiler Lab. SysY is a simple subset of C. This project implements a compiler from SysY to RISC-V assembly, including basic syntax analysis, semantic analysis, intermediate code generation, and register allocation.
-
-*#link("https://github.com/silver-ymz/xv6-labs-2023")[xv6-labs]*: MIT 6.S081 Operating System Engineering Lab. Implemented features including Utilities, System calls, Page tables, Traps, Copy-on-Write, Multithreading, Network driver, Locks, File system, and mmap.
-
-*RCore OS*: Operating System Lab. Implemented modules for page tables, processes, file systems, IPC, concurrency, and IO.
-
-*Minnow*: Stanford CS144 Computer Networking Lab. A simple TCP/IP protocol stack supporting basic IP, ICMP, ARP, UDP, TCP protocols, implementing basic routing, forwarding, and connection management.
+== Extracurricular Activities
+#item2[0w1 Cybersecurity Club | President][2024.05 -- 2025.05]
+- As President, I was responsible for the club's overall operations, including recruitment, and organizing tech talks and training sessions.
+- Studied cryptography, gaining familiarity with modern techniques such as DES, AES, and RSA.
 
 == Skills
-
-- *Language Proficiency*: Chinese (native), English (CET-4: 546, CET-6: 492)
-- *Programming Languages* (in order of proficiency): Rust, C/C++, Python 3, Haskell, JavaScript, Java, C\#, Coq
+- *Programming Languages*: #bbold[Rust], #bbold[C/C++], Python, Haskell, JavaScript, Java, C\#
+- *Languages*: Chinese (Native), English (Proficient in reading technical documentation and academic papers, CET-4: 546, CET-6: 492)
