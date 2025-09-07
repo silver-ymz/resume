@@ -61,7 +61,7 @@
 
 == 工作经历
 #item2[字节跳动 数据库开发实习生 (ByteHouse 存储团队)][2025.07 -- 至今]
-- 深度参与云原生数据仓库 *#link("https://bytehouse.cloud")[ByteHouse]* 的研发。ByteHouse 作为 #bbold[云原生]数据仓库，实现了存算分离、多租户资源隔离与弹性伸缩等特性。
+- 深度参与云原生数据仓库 *#link("https://bytehouse.cloud")[ByteHouse]* 的研发。ByteHouse 基于 ClickHouse 修改，作为 #bbold[云原生]数据仓库，实现了存算分离、多租户资源隔离与弹性伸缩等特性。
 - *独立负责 Auto Partition 功能的前期设计与实现*：目前正基于 Snowflake 微分区思想，进行自动分区与 Min-Max 索引裁剪方案的开发，旨在提升数据管理的自动化程度与查询效率。
 - 参与并负责 #bbold[Merge/Mutate] 及 #bbold[Transaction] 核心模块的开发、测试与维护工作。
 

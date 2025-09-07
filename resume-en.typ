@@ -60,7 +60,7 @@
 
 == Work Experience
 #item2[ByteDance | Database System R&D Intern (ByteHouse Storage Team)][2025.07 -- Present]
-- Developing the cloud data warehouse, *#link("https://bytehouse.cloud")[ByteHouse]*, a #bbold[cloud-native] platform with decoupled storage and compute, multi-tenancy, and elastic scalability.
+- Developing the cloud data warehouse, *#link("https://bytehouse.cloud")[ByteHouse]*, a fork of ClickHouse, a #bbold[cloud-native] platform with decoupled storage and compute, multi-tenancy, and elastic scalability.
 - *Leading the design and initial implementation of the Auto Partition feature*: Building an automatic partitioning and Min-Max index pruning scheme based on Snowflake's micro-partitioning concepts to enhance data management automation and query efficiency.
 - Contributing to the development, testing, and maintenance of core modules including #bbold[Merge/Mutate] and #bbold[Transactions].
 
